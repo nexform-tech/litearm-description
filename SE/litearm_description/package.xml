@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>litearm_urdf</name>
+  <name>litearm_description</name>
   <version>1.0.0</version>
-  <description>URDF Description package for litearm_urdf (ROS 2)</description>
+  <description>URDF Description package for litearm_description (ROS 2)</description>
   <author>TODO</author>
   <maintainer email="TODO@email.com">TODO</maintainer>
   <license>BSD</license>

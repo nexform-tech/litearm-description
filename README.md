@@ -13,7 +13,7 @@ litearm 系列机械臂的 URDF 描述仓库。
 ```
 litearm-urdf/
 ├── SE/                      # litearm SE 型号
-│   └── litearm_urdf/        # ROS 2 功能包（URDF + 网格 + launch + rviz）
+│   └── litearm_description/        # ROS 2 功能包（URDF + 网格 + launch + rviz）
 ├── S/                       # litearm S 型号
 ├── SL/                      # litearm SL 型号
 ├── P/                       # litearm P 型号
@@ -28,7 +28,7 @@ litearm-urdf/
 
 | 型号 | 目录 | 功能包 | 状态 |
 |------|------|--------|------|
-| SE | [`SE/`](SE/) | [`litearm_urdf`](SE/litearm_urdf/) | ✅ 已收录 |
+| SE | [`SE/`](SE/) | [`litearm_description`](SE/litearm_description/) | ✅ 已收录 |
 | S | [`S/`](S/) | — | 🚧 待补充 |
 | SL | [`SL/`](SL/) | — | 🚧 待补充 |
 | P | [`P/`](P/) | — | 🚧 待补充 |
@@ -43,14 +43,14 @@ litearm-urdf/
 ```bash
 cd SE
 source /opt/ros/humble/setup.bash
-colcon build --packages-select litearm_urdf
+colcon build --packages-select litearm_description
 source install/setup.bash
-ros2 launch litearm_urdf display.launch.py
+ros2 launch litearm_description display.launch.py
 ```
 
 启动后将打开 RViz2 显示机械臂模型，并可通过关节控制 GUI 实时拖动关节。
 
-各功能包的详细构建与使用说明见对应目录下的 README，例如 [SE/litearm_urdf/README.md](SE/litearm_urdf/README.md)。
+各功能包的详细构建与使用说明见对应目录下的 README，例如 [SE/litearm_description/README.md](SE/litearm_description/README.md)。
 
 ---
 
