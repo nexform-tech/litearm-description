@@ -1,4 +1,4 @@
-# litearm-urdf
+# litearm-description
 
 litearm 系列机械臂的 URDF 描述仓库。
 
@@ -11,7 +11,7 @@ litearm 系列机械臂的 URDF 描述仓库。
 仓库按机械臂型号分目录，每个型号下是一个或多个 ROS 2 功能包：
 
 ```
-litearm-urdf/
+litearm-description/
 ├── SE/                      # litearm SE 型号
 │   └── litearm_description/        # ROS 2 功能包（URDF + 网格 + launch + rviz）
 ├── S/                       # litearm S 型号
