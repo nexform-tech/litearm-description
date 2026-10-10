@@ -1,4 +1,4 @@
-# litearm_urdf
+# litearm_description
 
 litearm SE 版本的 机械臂的 URDF 描述功能包（ROS 2 / ament_cmake）。
 
@@ -11,18 +11,18 @@ litearm SE 版本的 机械臂的 URDF 描述功能包（ROS 2 / ament_cmake）�
 ## 目录结构
 
 ```
-litearm_urdf/
+litearm_description/
 ├── package.xml              # ROS 2 包描述（ament_cmake）
 ├── CMakeLists.txt           # 构建与安装规则
 ├── urdf/
-│   └── litearm_urdf.urdf     # 机器人 URDF 模型
+│   └── litearm_description.urdf     # 机器人 URDF 模型
 ├── meshes/                  # 各连杆的 STL 网格
 ├── launch/
 │   └── display.launch.py     # 启动 RViz + 关节控制 GUI
 ├── rviz/
 │   └── urdf.rviz            # RViz2 显示配置
 └── config/
-    └── joint_names_litearm_urdf.yaml
+    └── joint_names_litearm_description.yaml
 ```
 
 ---
@@ -58,7 +58,7 @@ source /opt/ros/humble/setup.bash
 conda deactivate                                              # 方式一
 # 或：export PATH=$(echo "$PATH" | tr ':' '\n' | grep -v miniconda | paste -sd:)   # 方式二
 
-colcon build --packages-select litearm_urdf
+colcon build --packages-select litearm_description
 ```
 
 ---
@@ -69,7 +69,7 @@ colcon build --packages-select litearm_urdf
 source /opt/ros/humble/setup.bash
 source install/setup.bash          # 在工作空间根目录执行
 
-ros2 launch litearm_urdf display.launch.py
+ros2 launch litearm_description display.launch.py
 ```
 
 启动后会打开：
@@ -81,13 +81,13 @@ ros2 launch litearm_urdf display.launch.py
 
 | 参数 | 默认值 | 说明 |
 |------|--------|------|
-| `model` | 包内 `urdf/litearm_urdf.urdf` | 指定要加载的 URDF 文件绝对路径 |
+| `model` | 包内 `urdf/litearm_description.urdf` | 指定要加载的 URDF 文件绝对路径 |
 | `gui` | `true` | 是否启动关节控制 GUI |
 
 示例：
 
 ```bash
-ros2 launch litearm_urdf display.launch.py model:=/path/to/other.urdf
+ros2 launch litearm_description display.launch.py model:=/path/to/other.urdf
 ```
 
 ---
@@ -96,7 +96,7 @@ ros2 launch litearm_urdf display.launch.py model:=/path/to/other.urdf
 
 ```bash
 # 检查 URDF 是否有效
-check_urdf install/litearm_urdf/share/litearm_urdf/urdf/litearm_urdf.urdf
+check_urdf install/litearm_description/share/litearm_description/urdf/litearm_description.urdf
 
 # 查看运行中的节点
 ros2 node list        # 应包含 /robot_state_publisher /joint_state_publisher_gui /rviz2

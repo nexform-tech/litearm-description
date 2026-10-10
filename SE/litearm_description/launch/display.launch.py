@@ -9,9 +9,9 @@ from launch_ros.descriptions import ParameterValue
 
 
 def generate_launch_description():
-    pkg_share = get_package_share_directory('litearm_urdf')
+    pkg_share = get_package_share_directory('litearm_description')
 
-    default_model_path = os.path.join(pkg_share, 'urdf', 'litearm_urdf.urdf')
+    default_model_path = os.path.join(pkg_share, 'urdf', 'litearm_description.urdf')
     default_rviz_path = os.path.join(pkg_share, 'rviz', 'urdf.rviz')
 
     model_arg = DeclareLaunchArgument(
