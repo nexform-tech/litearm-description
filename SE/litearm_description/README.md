@@ -51,7 +51,7 @@ sudo apt install ros-humble-robot-state-publisher \
 将本包放入某个 colcon 工作空间（本仓库中即 `SE/` 目录），然后：
 
 ```bash
-cd <工作空间>          # 例如 litearm-urdf/SE
+cd <工作空间>          # 例如 litearm-description/SE
 source /opt/ros/humble/setup.bash
 
 # 若默认 python3 是 conda，需先切回系统 python：
