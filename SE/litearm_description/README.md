@@ -1,4 +1,4 @@
-# litearm
+# litearm_description
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
@@ -18,11 +18,11 @@ fixed joint. The whole arm weighs 2.7911 kg.
 ## Layout
 
 ```text
-litearm/
+litearm_description/
 ├── package.xml                     # ament_cmake package manifest
 ├── CMakeLists.txt                  # build and install rules
 ├── urdf/
-│   └── litearm.urdf                # the robot model
+│   └── litearm_description.urdf    # the robot model
 ├── meshes/                         # 9 STL meshes (base_link, joint1..7, ee_link)
 ├── launch/
 │   ├── display.launch.py           # RViz2 plus the joint state GUI
@@ -30,7 +30,7 @@ litearm/
 ├── rviz/
 │   └── display.rviz                # RViz2 configuration (fixed frame base_link)
 └── config/
-    └── joint_names_litearm.yaml
+    └── joint_names_litearm_description.yaml
 ```
 
 ## Where the model comes from
@@ -78,7 +78,7 @@ conda deactivate
 # Or drop miniconda from PATH:
 export PATH=$(echo "$PATH" | tr ':' '\n' | grep -v miniconda | paste -sd:)
 
-colcon build --packages-select litearm
+colcon build --packages-select litearm_description
 ```
 
 ## Run in RViz2
@@ -87,7 +87,7 @@ colcon build --packages-select litearm
 source /opt/ros/humble/setup.bash
 source install/setup.bash          # run this from the workspace root
 
-ros2 launch litearm display.launch.py
+ros2 launch litearm_description display.launch.py
 ```
 
 This starts three nodes:
@@ -97,24 +97,24 @@ This starts three nodes:
 - **robot_state_publisher**
 
 `display.launch.py` takes no arguments. The model path is fixed at
-`urdf/litearm.urdf` inside this package. To load a different URDF, edit that
+`urdf/litearm_description.urdf` inside this package. To load a different URDF, edit that
 file and rebuild. **Do not expect a launch argument to override it** — there
 is none.
 
 ## Run in Gazebo
 
 ```bash
-ros2 launch litearm gazebo.launch.py
+ros2 launch litearm_description gazebo.launch.py
 ```
 
 This starts an empty Gazebo world, publishes `robot_description`, and spawns
-the model under the name `litearm`.
+the model under the name `litearm_description`.
 
 ## Verify
 
 ```bash
 # URDF syntax and kinematic tree
-check_urdf install/litearm/share/litearm/urdf/litearm.urdf
+check_urdf install/litearm_description/share/litearm_description/urdf/litearm_description.urdf
 
 # Running nodes; expect /robot_state_publisher, /joint_state_publisher_gui, /rviz2
 ros2 node list

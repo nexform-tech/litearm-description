@@ -7,8 +7,8 @@ from ament_index_python.packages import get_package_share_directory
 
 
 def generate_launch_description():
-    pkg = get_package_share_directory('litearm')
-    urdf_path = os.path.join(pkg, 'urdf', 'litearm.urdf')
+    pkg = get_package_share_directory('litearm_description')
+    urdf_path = os.path.join(pkg, 'urdf', 'litearm_description.urdf')
 
     with open(urdf_path, 'r') as f:
         robot_description = f.read()
@@ -33,7 +33,7 @@ def generate_launch_description():
             package='gazebo_ros',
             executable='spawn_entity.py',
             name='spawn_entity',
-            arguments=['-file', urdf_path, '-urdf', '-model', 'litearm'],
+            arguments=['-file', urdf_path, '-urdf', '-model', 'litearm_description'],
             output='screen',
         ),
     ])

@@ -14,7 +14,7 @@ a buildable ROS 2 (ament_cmake) package you can open in RViz2.
 ```text
 litearm-description/
 ├── SE/                     # litearm SE
-│   └── litearm/            # ROS 2 package: URDF, meshes, launch, rviz
+│   └── litearm_description/ # ROS 2 package: URDF, meshes, launch, rviz
 ├── S/                      # litearm S
 ├── SL/                     # litearm SL
 ├── P/                      # litearm P
@@ -27,7 +27,7 @@ Each model directory holds its own ROS 2 package in the same layout.
 
 | Model | Directory | Package | Status |
 | --- | --- | --- | --- |
-| SE | [`SE/`](SE/) | [`litearm`](SE/litearm/) | Available |
+| SE | [`SE/`](SE/) | [`litearm_description`](SE/litearm_description/) | Available |
 | S | [`S/`](S/) | — | Pending |
 | SL | [`SL/`](SL/) | — | Pending |
 | P | [`P/`](P/) | — | Pending |
@@ -41,16 +41,16 @@ directory and package name.
 ```bash
 cd SE
 source /opt/ros/humble/setup.bash
-colcon build --packages-select litearm
+colcon build --packages-select litearm_description
 source install/setup.bash
-ros2 launch litearm display.launch.py
+ros2 launch litearm_description display.launch.py
 ```
 
 RViz2 opens showing the arm, and the joint state GUI gives you a slider per
 joint.
 
 Each package documents its own build and use. Start with
-[SE/litearm/README.md](SE/litearm/README.md).
+[SE/litearm_description/README.md](SE/litearm_description/README.md).
 
 ## Requirements
 
