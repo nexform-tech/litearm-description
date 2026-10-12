@@ -1,11 +1,11 @@
 <package format="3">
-  <name>litearm</name>
+  <name>litearm_description</name>
   <version>1.0.0</version>
   <description>
-    URDF Description package for litearm. Contains configuration data,
+    URDF Description package for litearm_description. Contains configuration data,
     3D models and launch files for the litearm 7-DOF robot.
   </description>
-  <maintainer email="TODO@email.com">TODO</maintainer>
+  <maintainer email="wuruihao@nexform.tech">NEXFORM ROBOTICS</maintainer>
   <license>BSD</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

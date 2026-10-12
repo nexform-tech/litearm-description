@@ -1,4 +1,4 @@
-# litearm
+# litearm_description
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
@@ -13,11 +13,11 @@ litearm SE 型号机械臂的 URDF 描述功能包（ROS 2 / ament_cmake）。�
 ## 目录结构
 
 ```text
-litearm/
+litearm_description/
 ├── package.xml                     # ament_cmake 包描述
 ├── CMakeLists.txt                  # 构建与安装规则
 ├── urdf/
-│   └── litearm.urdf                # 机器人模型
+│   └── litearm_description.urdf    # 机器人模型
 ├── meshes/                         # 9 个 STL 网格（base_link、joint1..7、ee_link）
 ├── launch/
 │   ├── display.launch.py           # RViz2 + 关节状态 GUI
@@ -25,7 +25,7 @@ litearm/
 ├── rviz/
 │   └── display.rviz                # RViz2 配置（Fixed Frame = base_link）
 └── config/
-    └── joint_names_litearm.yaml
+    └── joint_names_litearm_description.yaml
 ```
 
 ## 模型来源
@@ -63,7 +63,7 @@ conda deactivate
 # 方式二：从 PATH 中剔除 miniconda
 export PATH=$(echo "$PATH" | tr ':' '\n' | grep -v miniconda | paste -sd:)
 
-colcon build --packages-select litearm
+colcon build --packages-select litearm_description
 ```
 
 ## 在 RViz2 中运行
@@ -72,7 +72,7 @@ colcon build --packages-select litearm
 source /opt/ros/humble/setup.bash
 source install/setup.bash          # 在工作空间根目录执行
 
-ros2 launch litearm display.launch.py
+ros2 launch litearm_description display.launch.py
 ```
 
 会启动三个节点：
@@ -81,21 +81,21 @@ ros2 launch litearm display.launch.py
 - **joint_state_publisher_gui**，每个关节一根滑条
 - **robot_state_publisher**
 
-`display.launch.py` **不接受参数**。模型路径固定为本包内的 `urdf/litearm.urdf`。要换 URDF，直接改该文件后重新构建。**不要指望用 launch 参数覆盖它** —— 没有这个参数。
+`display.launch.py` **不接受参数**。模型路径固定为本包内的 `urdf/litearm_description.urdf`。要换 URDF，直接改该文件后重新构建。**不要指望用 launch 参数覆盖它** —— 没有这个参数。
 
 ## 在 Gazebo 中运行
 
 ```bash
-ros2 launch litearm gazebo.launch.py
+ros2 launch litearm_description gazebo.launch.py
 ```
 
-会启动一个空的 Gazebo 世界、发布 `robot_description`，并以模型名 `litearm` 生成实体。
+会启动一个空的 Gazebo 世界、发布 `robot_description`，并以模型名 `litearm_description` 生成实体。
 
 ## 验证
 
 ```bash
 # URDF 语法与运动学树
-check_urdf install/litearm/share/litearm/urdf/litearm.urdf
+check_urdf install/litearm_description/share/litearm_description/urdf/litearm_description.urdf
 
 # 运行中的节点；应包含 /robot_state_publisher、/joint_state_publisher_gui、/rviz2
 ros2 node list
