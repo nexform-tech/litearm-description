@@ -1,44 +1,42 @@
 # litearm-description
 
-litearm 系列机械臂的 URDF 描述仓库。
+[English](README.md) | [简体中文](README.zh-CN.md)
 
-本仓库集中存放 litearm **全系列** 机械臂的 URDF 模型、3D 网格、RViz 配置及 ROS 2 启动文件。每个硬件版本以独立子目录组织，均为可直接构建、可在 RViz2 中可视化的 ROS 2 (ament_cmake) 功能包。
+URDF descriptions for the litearm arm family. Use this repository to inspect
+or simulate a litearm arm without going through the firmware or SDK
+repositories.
 
----
+Every litearm hardware version lives in its own subdirectory, and each one is
+a buildable ROS 2 (ament_cmake) package you can open in RViz2.
 
-## 目录结构
+## Repository layout
 
-仓库按机械臂型号分目录，每个型号下是一个或多个 ROS 2 功能包：
-
-```
+```text
 litearm-description/
-├── SE/                      # litearm SE 型号
-│   └── litearm/                     # ROS 2 功能包（URDF + 网格 + launch + rviz）
-├── S/                       # litearm S 型号
-├── SL/                      # litearm SL 型号
-├── P/                       # litearm P 型号
-└── PL/                      # litearm PL 型号
+├── SE/                     # litearm SE
+│   └── litearm/            # ROS 2 package: URDF, meshes, launch, rviz
+├── S/                      # litearm S
+├── SL/                     # litearm SL
+├── P/                      # litearm P
+└── PL/                     # litearm PL
 ```
 
-> 每个型号目录内均以相同结构组织各自的 ROS 2 功能包。
+Each model directory holds its own ROS 2 package in the same layout.
 
----
+## Model matrix
 
-## 型号列表
+| Model | Directory | Package | Status |
+| --- | --- | --- | --- |
+| SE | [`SE/`](SE/) | [`litearm`](SE/litearm/) | Available |
+| S | [`S/`](S/) | — | Pending |
+| SL | [`SL/`](SL/) | — | Pending |
+| P | [`P/`](P/) | — | Pending |
+| PL | [`PL/`](PL/) | — | Pending |
 
-| 型号 | 目录 | 功能包 | 状态 |
-|------|------|--------|------|
-| SE | [`SE/`](SE/) | [`litearm`](SE/litearm/) | ✅ 已收录 |
-| S | [`S/`](S/) | — | 🚧 待补充 |
-| SL | [`SL/`](SL/) | — | 🚧 待补充 |
-| P | [`P/`](P/) | — | 🚧 待补充 |
-| PL | [`PL/`](PL/) | — | 🚧 待补充 |
+## Quick start
 
----
-
-## 快速开始
-
-以 SE 版本为例（其他系列步骤一致，替换对应目录/包名即可）：
+SE is the worked example. Other models follow the same steps with their own
+directory and package name.
 
 ```bash
 cd SE
@@ -48,14 +46,14 @@ source install/setup.bash
 ros2 launch litearm display.launch.py
 ```
 
-启动后将打开 RViz2 显示机械臂模型，并可通过关节控制 GUI 实时拖动关节。
+RViz2 opens showing the arm, and the joint state GUI gives you a slider per
+joint.
 
-各功能包的详细构建与使用说明见对应目录下的 README，例如 [SE/litearm/README.md](SE/litearm/README.md)。
+Each package documents its own build and use. Start with
+[SE/litearm/README.md](SE/litearm/README.md).
 
----
-
-## 环境要求
+## Requirements
 
 - ROS 2 Humble
-- colcon 构建工具
-- 依赖：`robot_state_publisher`、`joint_state_publisher_gui`、`rviz2`、`xacro`
+- colcon
+- `robot_state_publisher`, `joint_state_publisher_gui`, `rviz2`
