@@ -46,6 +46,16 @@ repository used to publish under `SE/`. The two generations differ in link
 naming (`Link*` versus `joint*`), joint zeroes, link lengths, masses and
 inertias, and joint limits. They are not interchangeable.
 
+## Note on the joint 6 axis
+
+**`joint6` uses the axis `0 0 -1`, while every other joint uses `0 0 1`. This
+is deliberate, not an error in the URDF.** On the real arm the joint 6 motor is
+installed with its **stator and rotor reversed**, so that joint turns the
+opposite way from a normally mounted motor. **The URDF was edited on purpose so
+the model matches the physical hardware. Do not "fix" the sign** — restoring
+`0 0 1` would make the model disagree with the real arm, and any controller or
+planner that consumes this URDF would drive joint 6 backwards.
+
 ## Requirements
 
 - ROS 2 Humble
