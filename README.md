@@ -6,8 +6,9 @@ URDF descriptions for the litearm arm family. Use this repository to inspect
 or simulate a litearm arm without going through the firmware or SDK
 repositories.
 
-Every litearm hardware version lives in its own subdirectory, and each one is
-a buildable ROS 2 (ament_cmake) package you can open in RViz2.
+Every litearm hardware version gets its own subdirectory, each meant to hold a
+buildable ROS 2 (ament_cmake) package you can open in RViz2. Only SE is
+populated today; the other four are placeholders — see the model matrix below.
 
 ## Repository layout
 
