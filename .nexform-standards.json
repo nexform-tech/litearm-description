@@ -3,6 +3,6 @@
   "version": "1",
   "repo_type": "code",
   "ci_template": "minimal",
-  "release_workflow": "nexform-tech/nexform-skills/.github/workflows/release.yml@v0",
-  "updated_at": "2026-10-27T02:21:45Z"
+  "release_workflow": "nexform-tech/workflows/.github/workflows/release.yml@v1",
+  "updated_at": "2026-10-27T02:40:59Z"
 }
