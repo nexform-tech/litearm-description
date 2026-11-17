@@ -13,7 +13,7 @@ joint state GUI.
 Kinematic chain: `base_link → joint1 → joint2 → … → joint7 → ee_link`.
 
 The seven joints are revolute. The `ee_link` frame hangs off `joint7` on a
-fixed joint. The whole arm weighs 2.7911 kg.
+fixed joint. The whole arm weighs 3.2903 kg with its outer shell fitted.
 
 ## Layout
 
@@ -35,11 +35,26 @@ litearm_description/
 
 ## Where the model comes from
 
-The URDF and the meshes are taken from the `litearm` package in the
-`litearm-stm32` repository and are byte-identical to it. That is the current
-model of this arm, the non-hollow revision. The URDF comes from
-`litearm/urdf/litearm.urdf`; the meshes come from the non-hollow URDF package
-shipped beside it. SolidWorks URDF Exporter produced the URDF.
+The URDF and meshes come from the `litearm1019` SolidWorks export dated
+2026-10-19. That export is the current model of this arm **with its outer
+shell fitted**. Only the robot name and the `package://` prefix were changed;
+joint origins, axes, limits, inertias and meshes are unchanged from the source
+export. SolidWorks URDF Exporter produced the URDF.
+
+The joint frames match the firmware. Every joint origin, axis and limit is
+value-for-value identical to `assets/litearm/urdf/litearm_id.urdf` in
+`litearm-stm32`, and forward kinematics differs by zero over the sampled
+configurations. The firmware derives its soft limits as the URDF hard limits
+minus 1 degree per side.
+
+The shell adds about 0.499 kg over the non-hollow revision: 3.2903 kg versus
+2.7911 kg, concentrated in joints 2 to 5. The firmware dynamics model is still
+generated from the non-hollow source. **Do not swap in this mass table without
+regenerating that model and rechecking the gravity scaling.**
+
+The SolidWorks CSV export is deliberately not included. It records the raw
+SolidWorks joint frames and joint 6 as `0 0 1`, neither of which matches this
+URDF. Use the URDF as the source of joint frames.
 
 Do not mix this model with the earlier `litearm_description` package the
 repository used to publish under `SE/`. The two generations differ in link

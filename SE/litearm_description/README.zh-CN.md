@@ -8,7 +8,7 @@ litearm SE 型号机械臂的 URDF 描述功能包（ROS 2 / ament_cmake）。�
 
 运动链：`base_link → joint1 → joint2 → … → joint7 → ee_link`。
 
-7 个关节均为 revolute。`ee_link` 坐标系经一个 fixed joint 挂在 `joint7` 上。整臂质量 2.7911 kg。
+7 个关节均为 revolute。`ee_link` 坐标系经一个 fixed joint 挂在 `joint7` 上。整臂质量 3.2903 kg（带外壳）。
 
 ## 目录结构
 
@@ -30,7 +30,13 @@ litearm_description/
 
 ## 模型来源
 
-本包的 URDF 与网格取自 `litearm-stm32` 仓库中的 `litearm` 包，**逐字节一致**。那是该臂的当前模型，即「非空版」。URDF 来自 `litearm/urdf/litearm.urdf`，网格来自与它同处的「非空版 URDF 包」。URDF 由 SolidWorks URDF Exporter 导出。
+本包的 URDF 与网格取自 `litearm1019` 的 SolidWorks 导出（2026-10-19）。那是该臂的当前模型，**带外壳版**。仅改动了 robot 名与 `package://` 前缀；关节原点、轴向、限位、惯量与网格均与源导出一致。URDF 由 SolidWorks URDF Exporter 导出。
+
+关节坐标系与固件一致：各关节的 origin、axis 与 limit 与 `litearm-stm32` 中的 `assets/litearm/urdf/litearm_id.urdf` 逐值相同，抽样构型下正运动学偏差为 0。固件的软限位按 URDF 硬限位每侧减 1° 生成。
+
+外壳比非空版多约 0.499 kg：3.2903 kg 对 2.7911 kg，差值集中在第 2 至第 5 关节。固件动力学模型目前仍由非空版生成。**不要只替换本表的惯量而不重生成该模型并复核重力缩放。**
+
+本包刻意不包含 SolidWorks 的 CSV 导出。该文件记录的是 SolidWorks 原始关节帧，且把第 6 关节记为 `0 0 1`，两者都与本 URDF 不符。关节帧一律以 URDF 为准。
 
 **不要**把这个模型与仓库此前在 `SE/` 下发布的 `litearm_description` 包混用。两代模型在连杆命名（`Link*` 对 `joint*`）、关节零位、连杆尺寸、质量与惯量、关节限位上都不同，不可互换。
 
